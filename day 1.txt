@@ -1,0 +1,132 @@
+ Parameter: groupId, Value: iiht-spring-core
+[INFO] Parameter: artifactId, Value: collections-ioc
+[INFO] Parameter: version, Value: 1.0-SNAPSHOT
+[INFO] Parameter: package, Value: com.iiht.ioc
+[INFO] Parameter: packageInPathFormat, Value: com/iiht/ioc
+18/07/2024
+
+[INFO] Parameter: package, Value: com.iiht.ioc
+[INFO] Parameter: groupId, Value: iiht-spring-core
+[INFO] Parameter: artifactId, Value: collections-ioc
+[INFO] Parameter: version, Value: 1.0-SNAPSHOT
+[INFO] Project created from Archetype in dir: D:\springioc-day1\collections-ioc
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:02 min
+[INFO] Finished at: 2024-07-18T15:25:48+05:30
+[INFO] ------------------------------------------------------------------------
+
+D:\springioc-day1>tree/f
+Folder PATH listing
+Volume serial number is 4E7B-83B4
+D:.
+└───collections-ioc
+    │   pom.xml
+    │
+    └───src
+        ├───main
+        │   └───java
+        │       └───com
+        │           └───iiht
+        │               └───ioc
+        │                       App.java
+        │
+        └───test
+            └───java
+                └───com
+                    └───iiht
+                        └───ioc
+                                AppTest.java
+
+_________________
+import the collection-ioc to eclipse
+{asm- for integration
+cglib-for proxies}
+-create the dependencies(core, beans, asm,cglib, context)
+-check whether the dependencies are downloaded by saving the file
+-create beans.xml in src/main/java
+- in maven dependencies->spring beans->meta-inf->spring schemas copy the url and paste it to beans.xml
+then beans.xml:
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+>
+
+</beans>
+- then make the class a and members
+-once we instantiate spring ioc container ,then it reads the xml file,then the beans.xml is an object then we can call it.
+-then injection of custructor using arrayList<>(); similarly hashset, linkedlist,treeset .
+
+_______________________________________________________________________________________________
+
+19/07/24:
+
+spring is invasive, supports dependencies
+dependencies are of two types:constructor injection and setter injection
+
+Loggers:
+https://docs.oracle.com/javase/8/docs/api/java/util/logging/Logger.html
+-
+
+public static void main(String[] args) {
+		
+		Logger logger=Logger.getLogger("TestShapes");
+		
+		BeanFactory factory=new FileSystemXmlApplicationContext("beans.xml");
+		logger.info(factory+"");
+		//rectangle
+		Shape s=(Rectangle)factory.getBean("rect");
+		logger.info(s+"");
+		double result=s.area();
+		logger.info("Rectangle Area="+result);
+		//to get class name
+		String className=s.getShape();
+		logger.info(className+"");
+		//triangle
+		Shape s1=(Triangle)factory.getBean("tria");
+		logger.info(s1+"");
+		double result1=s1.area();
+		logger.info("Triangle area="+result1);
+		//Rhombus
+		Rhombus rhombus=(Rhombus)factory.getBean("rhomb");
+		logger.info(rhombus+"");
+		double result2=rhombus.area();
+		logger.info("Rhombus area="+result2);
+		
+		
+	}
+
+__________
+for setter injection the constructor is mandatory.
+-when the scope=singleton(default) ten s==s2(two objects of the same class;
+-when scope=prototype then s!=s2(each time the object is created it creates a new one)-->https://docs.spring.io/spring-framework/reference/core/beans/factory-scopes.html
+[singleton
+
+(Default) Scopes a single bean definition to a single object instance for each Spring IoC container.
+
+prototype
+
+Scopes a single bean definition to any number of object instances.]
+
+Component :
+A component is a collection of objects that furnish a set of offerings to different systems. They have many elements in frequent with objects.Components can also be run both locally or in a distributed fashion. Many examples of locally run components exist and are oftentimes used to supply precise performance to exterior programs.Components are a self-contained entity that exports performance to its surroundings and might also additionally import functionality from its surroundings the use of well-defined and open interfaces. Components Provide offerings to different structures and Use referred to interfaces to engage with different structures.
+Object:
+Object :
+The object is a real-world entity which is a bundle of data and its conduct (often acknowledged as methods). These real-world objects share two characteristics, they have states and behaviors.
+
+
+-when we use FileSystemXmlApplicationContext the xml file should be in the main project
+-and when we use ClassPathXmlApplicationContext the xml file should be in the main src file.
+
+-Autowiring:
+	without using constructor injection we can automatically assign the a1, a2 to members list(and it is not arraylist its List type).
+
+
+-Lazy beans:
+	prototypes are lazily loaded.
+	Application context singletons are eagerly loaded
+
+https://tmpfiles.org/11594852/firstrestjpamysql.rar
+
+
