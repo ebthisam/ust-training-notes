@@ -1,0 +1,27 @@
+18/07/24
+maven:
+No goals have been specified for this build. You must specify a valid lifecycle phase or a goal in the format 
+<plugin-prefix>:<goal> or <plugin-group-id>:<plugin-artifact-id>[:<plugin-version>]:<goal>. 
+Available lifecycle phases are: validate, initialize, generate-sources, process-sources, 
+generate-resources, process-resources, compile, process-classes, generate-test-sources, 
+process-test-sources, generate-test-resources, process-test-resources, test-compile, 
+process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, 
+post-integration-test, verify, install, deploy, pre-clean, clean, post-clean, pre-site, site, 
+post-site, site-deploy.
+_________________________________________
+mvn archetype:generate
+Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 2158: 2158
+Choose a number: 8: 8
+Define value for property 'groupId': iiht-spring-core
+Define value for property 'artifactId': collections-ioc
+Define value for property 'version' 1.0-SNAPSHOT: :
+Define value for property 'package' iiht-spring-core: : com.iiht.ioc
+Confirm properties configuration:
+groupId: iiht-spring-core
+artifactId: collections-ioc
+version: 1.0-SNAPSHOT
+package: com.iiht.ioc
+ Y: : Y
+ _________________________________________
+ tree/f
+ 
